@@ -8,3 +8,13 @@ SELECT employee_id 사번,
        CONCAT( ROUND((sysdate - hire_date) / 365), '년차') 경력   
 FROM employees
 ORDER BY 6 DESC, 5 DESC
+
+
+SELECT employee_id 사번, 
+       first_name ||' '|| last_name 이름,
+       TO_CHAR(salary * 12, '$999,999,999') 본봉,
+       (100 * NVL(commission_pct,0))||'%' 성과급비율,
+       TO_CHAR(salary * 12 * (1 +  NVL(commission_pct,0)), '$999,999,999') 실수령액,
+       ROUND((sysdate - hire_date) / 365) || '년차' 경력   
+FROM employees
+ORDER BY 6 DESC, 5 DESC
